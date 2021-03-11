@@ -13,23 +13,23 @@ function slide() {
 
 
     btnNext.click(function(e) {
-        var imgActive = $(".images > img.active")
+        var imgActive = $(".slider-wrapper .active")
 
         imgActive.removeClass("active")
         if (!imgActive.hasClass("last")) {
             imgActive.next().addClass("active")
         } else {
-            $("img.first").addClass("active")
+            $(".first").addClass("active")
         }
     });
     btnPrev.click(function(e) {
-        var imgActive = $(".images > img.active")
+        var imgActive = $(".slider-wrapper .active")
 
         imgActive.removeClass("active")
         if (!imgActive.hasClass("first")) {
             imgActive.prev().addClass("active")
         } else {
-            $("img.last").addClass("active")
+            $(".last").addClass("active")
         }
     });
 
