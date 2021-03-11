@@ -1,33 +1,45 @@
 $(document).ready(function() {
-
-    slide()
+    slide();
 
 });
 
+var index = 0;
+
+var allImg = $(".images>img");
+var imgCount = allImg.length;
+var allDots = $(".nav i");
 
 function slide() {
-    var btnNext = $(".next")
-    var btnPrev = $(".prev")
+
+    var btnNext = $(".next");
+    var btnPrev = $(".prev");
 
     btnNext.click(function(e) {
-        var active = $(".slider-wrapper .active")
-
-        active.removeClass("active")
-        if (!active.hasClass("last")) {
-            active.next().addClass("active")
+        if (index < imgCount - 1) {
+            index++;
         } else {
-            $(".first").addClass("active")
+            index = 0;
         }
+        setActiveImg(index);
     });
 
     btnPrev.click(function(e) {
-        var active = $(".slider-wrapper .active")
-
-        active.removeClass("active")
-        if (!active.hasClass("first")) {
-            active.prev().addClass("active")
+        if (index > 0) {
+            index--;
         } else {
-            $(".last").addClass("active")
+            index = imgCount - 1;
         }
+        setActiveImg(index);
     });
+    allDots.click(function(e) {
+        index = $(this).index();
+        setActiveImg(index);
+    });
+}
+
+function setActiveImg(index) {
+    allImg.removeClass("active");
+    $(allImg[index]).addClass("active");
+    allDots.removeClass("active");
+    $(allDots[index]).addClass("active");
 }
